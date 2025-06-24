@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание классов и наследование</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #ecf0f1;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        #createPersonBtn {
+            background-color: #2ecc71;
+        }
+        
+        #createPersonBtn:hover {
+            background-color: #27ae60;
+        }
+        
+        #createStudentBtn {
+            background-color: #9b59b6;
+        }
+        
+        #createStudentBtn:hover {
+            background-color: #8e44ad;
+        }
+        
+        #createTeacherBtn {
+            background-color: #e67e22;
+        }
+        
+        #createTeacherBtn:hover {
+            background-color: #d35400;
+        }
+        
+        #createEmployeeBtn {
+            background-color: #34495e;
+        }
+        
+        #createEmployeeBtn:hover {
+            background-color: #2c3e50;
+        }
+        
+        #output {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 5px solid #3498db;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .class-info {
+            background-color: #f0f7fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px dashed #3498db;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #2c3e50;
+            color: #fff;
+            font-size: 0.9em;
+        }
+        
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Частное учреждение образования «Гродненский колледж бизнеса и права»</h1>
+        <div class="subtitle">Лабораторная работа №15: Классы и наследование в JavaScript</div>
+    </header>
+    
+    <main>
+        <section id="personSection">
+            <h2>Демонстрация классов и наследования</h2>
+            
+            <div class="buttons">
+                <button id="createPersonBtn">Создать Person</button>
+                <button id="createStudentBtn">Создать Student</button>
+                <button id="createTeacherBtn">Создать Teacher</button>
+                <button id="createEmployeeBtn">Создать Employee</button>
+            </div>
+            
+            <div id="output">Нажмите на кнопку для создания объекта и вывода информации</div>
+            
+            <div class="class-info">
+                <h3>Иерархия классов:</h3>
+                <p><strong>Person</strong> (базовый класс) → <strong>Student</strong>, <strong>Teacher</strong>, <strong>Employee</strong></p>
+                <p>Каждый класс расширяет базовый класс Person, добавляя свои свойства и методы.</p>
+            </div>
+        </section>
+        
+        <section id="codeSection">
+            <h2>Примеры кода</h2>
+            <div class="class-info">
+                <h3>Класс Person:</h3>
+                <pre><code>class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    introduce() {
+        return `Меня зовут ${this.name}, мне ${this.age} лет.`;
+    }
+}</code></pre>
+                
+                <h3>Класс Student (наследует Person):</h3>
+                <pre><code>class Student extends Person {
+    constructor(name, age, major) {
+        super(name, age);
+        this.major = major;
+    }
+    
+    introduce() {
+        return `${super.introduce()} Я учусь на специальности ${this.major}.`;
+    }
+}</code></pre>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2023 Гродненский колледж бизнеса и права. Все права защищены.</p>
+    </footer>
+    
+    <script>
+        // Базовый класс Person
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            
+            // Метод для представления
+            introduce() {
+                return `Меня зовут ${this.name}, мне ${this.age} лет.`;
+            }
+            
+            // Метод для изменения имени
+            setName(newName) {
+                this.name = newName;
+                return `Имя изменено на ${newName}`;
+            }
+            
+            // Метод для изменения возраста
+            setAge(newAge) {
+                this.age = newAge;
+                return `Возраст изменён на ${newAge}`;
+            }
+        }
+        
+        // Класс Student, наследующий от Person
+        class Student extends Person {
+            constructor(name, age, major) {
+                super(name, age);
+                this.major = major;
+            }
+            
+            // Переопределение метода introduce
+            introduce() {
+                return `${super.introduce()} Я учусь на специальности "${this.major}".`;
+            }
+            
+            // Метод для изменения специальности
+            setMajor(newMajor) {
+                this.major = newMajor;
+                return `Специальность изменена на "${newMajor}"`;
+            }
+        }
+        
+        // Класс Teacher, наследующий от Person
+        class Teacher extends Person {
+            constructor(name, age, subject, experience) {
+                super(name, age);
+                this.subject = subject;
+                this.experience = experience;
+            }
+            
+            // Переопределение метода introduce
+            introduce() {
+                return `${super.introduce()} Я преподаю ${this.subject} уже ${this.experience} лет.`;
+            }
+            
+            // Метод для повышения квалификации
+            increaseExperience(years = 1) {
+                this.experience += years;
+                return `Стаж увеличен до ${this.experience} лет`;
+            }
+        }
+        
+        // Класс Employee, наследующий от Person
+        class Employee extends Person {
+            constructor(name, age, position, salary) {
+                super(name, age);
+                this.position = position;
+                this.salary = salary;
+            }
+            
+            // Переопределение метода introduce
+            introduce() {
+                return `${super.introduce()} Я работаю как ${this.position} с зарплатой $${this.salary}.`;
+            }
+            
+            // Метод для повышения зарплаты
+            raiseSalary(amount) {
+                this.salary += amount;
+                return `Зарплата увеличена до $${this.salary}`;
+            }
+        }
+        
+        // Обработчики событий для создания объектов
+        document.getElementById('createPersonBtn').addEventListener('click', function() {
+            const person = new Person('Иван Иванов', 35);
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <strong>Создан объект Person:</strong><br>
+                ${person.introduce()}<br><br>
+                <strong>Пример использования методов:</strong><br>
+                ${person.setName('Пётр Петров')}<br>
+                ${person.setAge(40)}<br><br>
+                <strong>Результат после изменений:</strong><br>
+                ${person.introduce()}
+            `;
+        });
+        
+        document.getElementById('createStudentBtn').addEventListener('click', function() {
+            const student = new Student('Анна Смирнова', 20, 'Компьютерные науки');
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <strong>Создан объект Student:</strong><br>
+                ${student.introduce()}<br><br>
+                <strong>Пример использования методов:</strong><br>
+                ${student.setMajor('Веб-разработка')}<br>
+                ${student.setAge(21)}<br><br>
+                <strong>Результат после изменений:</strong><br>
+                ${student.introduce()}
+            `;
+        });
+        
+        document.getElementById('createTeacherBtn').addEventListener('click', function() {
+            const teacher = new Teacher('Ольга Николаевна', 45, 'Математика', 15);
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <strong>Создан объект Teacher:</strong><br>
+                ${teacher.introduce()}<br><br>
+                <strong>Пример использования методов:</strong><br>
+                ${teacher.increaseExperience()}<br>
+                ${teacher.setName('Ольга Владимировна')}<br><br>
+                <strong>Результат после изменений:</strong><br>
+                ${teacher.introduce()}
+            `;
+        });
+        
+        document.getElementById('createEmployeeBtn').addEventListener('click', function() {
+            const employee = new Employee('Алексей Козлов', 30, 'Менеджер проектов', 2500);
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <strong>Создан объект Employee:</strong><br>
+                ${employee.introduce()}<br><br>
+                <strong>Пример использования методов:</strong><br>
+                ${employee.raiseSalary(500)}<br>
+                ${employee.setAge(31)}<br><br>
+                <strong>Результат после изменений:</strong><br>
+                ${employee.introduce()}
+            `;
+        });
+    </script>
+</body>
+</html>
